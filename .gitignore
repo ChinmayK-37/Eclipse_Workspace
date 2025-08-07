@@ -1,1 +1,25 @@
-.metadata
+# Ignore Eclipse workspace metadata
+.metadata/
+
+# Ignore other unrelated project folder
+DemoApp/
+
+# Ignore Tomcat server config (if stored in workspace)
+tomcat server/
+
+# Eclipse project files
+.classpath
+.project
+.settings/
+
+# Maven build output
+target/
+
+# OS-specific files
+.DS_Store
+Thumbs.db
+
+# Logs or temp files
+*.log
+*.tmp
+*.bak

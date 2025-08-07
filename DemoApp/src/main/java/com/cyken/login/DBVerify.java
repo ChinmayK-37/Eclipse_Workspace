@@ -3,6 +3,7 @@ package com.cyken.login;
 import java.io.IOException;
 import java.sql.*;
 
+import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletConfig;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -43,10 +44,15 @@ public class DBVerify extends HttpServlet{
                 	session.setAttribute("uname", uname);
                 	res.sendRedirect("welcome.jsp");
             } else {
-                System.out.println("Invalid username or password.");
-                String error = "Invalid username or password.";
-                req.setAttribute("error",error);
-                res.sendRedirect("login.jsp");
+            		System.out.println("Invalid username or password.");
+            		req.setAttribute("error", "Invalid username or password.");
+                
+            		try {
+                    RequestDispatcher rd = req.getRequestDispatcher("login.jsp");
+                    rd.forward(req, res);
+                } catch (Exception ex) {
+                    ex.printStackTrace();
+                }
                 
             }
 		} catch (ClassNotFoundException e) {
